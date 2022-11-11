@@ -17,7 +17,7 @@ export class CountDownComponent implements OnInit {
   public dataSource: TimeRange[] = [];
 
 
-  @Input() displayedColumns: string[] = ['years', 'months' ,'weeks', 'days', 'hours', 'minutes', 'seconds'];
+  @Input() displayedColumns: string[] = ['months' ,'weeks', 'days', 'hours', 'minutes', 'seconds'];
   @Input() eventName = formatDate(Date(), CountDownComponent.dateFormat, CountDownComponent.dateLocale);
   @Input() targetDate = moment();
 
