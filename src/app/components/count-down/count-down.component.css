@@ -1,7 +1,17 @@
-table {
-  width: 100%;
-}
-
 mat-card {
   margin: 10px;
+  min-width: 496px;
+  display: inline-block;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+th, td {
+  overflow: hidden;
+  width: 64px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
