@@ -11,6 +11,9 @@ import { AnniversaryComponent } from './components/anniversary/anniversary.compo
 import { ValentinesDayComponent } from './components/valentines-day/valentines-day.component';
 import { CountUpComponent } from './components/count-up/count-up.component';
 import { CountUpAnniversaryComponent } from './components/count-up-anniversary/count-up-anniversary.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { CountUpAnniversaryComponent } from './components/count-up-anniversary/c
     BrowserModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

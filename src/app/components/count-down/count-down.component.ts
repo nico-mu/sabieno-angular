@@ -16,6 +16,9 @@ export class CountDownComponent implements OnInit {
 
   public dataSource: TimeRange[] = [];
 
+  tableView = true;
+  public duration: TimeRange = {} as TimeRange;
+
 
   @Input() displayedColumns: string[] = ['months' ,'weeks', 'days', 'hours', 'minutes', 'seconds'];
   @Input() eventName = formatDate(Date(), CountDownComponent.dateFormat, CountDownComponent.dateLocale);
@@ -55,7 +58,19 @@ export class CountDownComponent implements OnInit {
     result.minutes = duration.minutes();
     result.seconds = duration.seconds();
 
+    this.duration.seconds = Math.floor(duration.asSeconds() * 10) / 10;
+    this.duration.minutes = Math.floor(duration.asMinutes() * 10) / 10;
+    this.duration.hours = Math.floor(duration.asHours() * 10) / 10;
+    this.duration.days = Math.floor(duration.asDays() * 10) / 10;
+    this.duration.weeks = Math.floor(duration.asWeeks() * 10) / 10;
+    this.duration.months = Math.floor(duration.asMonths() * 10) / 10;
+    this.duration.years = Math.floor(duration.asYears() * 10) / 10;
+
     return result;
+  }
+
+  switchData() {
+    this.tableView = !this.tableView;
   }
 
 }

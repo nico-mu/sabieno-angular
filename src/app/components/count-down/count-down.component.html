@@ -1,7 +1,12 @@
 <mat-card>
-  <mat-card-title>Countdown bis {{eventName}}</mat-card-title>
+  <mat-card-title>
+    <div fxLayout="row" fxLayoutAlign="space-between none">
+      <div>Countdown bis {{eventName}}</div>
+      <button (click)="switchData()" mat-icon-button aria-label="Ansicht wechseln"><mat-icon>compare_arrows</mat-icon></button>
+    </div>
+  </mat-card-title>
   <mat-card-content>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table *ngIf="tableView" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <!-- Seconds Column -->
       <ng-container matColumnDef="seconds">
@@ -48,5 +53,44 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <mat-list *ngIf="!tableView">
+      <div mat-subheader>Monate</div>
+      <mat-list-item>
+        <mat-icon mat-list-icon>timelapse</mat-icon>
+        <div>{{this.duration.months}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Wochen</div>
+      <mat-list-item>
+        <mat-icon mat-list-icon>timelapse</mat-icon>
+        <div>{{this.duration.weeks}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Tage</div>
+      <mat-list-item>
+        <mat-icon mat-list-icon>timelapse</mat-icon>
+        <div>{{this.duration.days}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Stunden</div>
+      <mat-list-item>
+        <mat-icon mat-list-icon>timelapse</mat-icon>
+        <div>{{this.duration.hours}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Minuten</div>
+      <mat-list-item>
+        <mat-icon mat-list-icon>timelapse</mat-icon>
+        <div>{{this.duration.minutes}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Sekunden</div>
+      <mat-list-item>
+        <mat-icon mat-list-icon>timelapse</mat-icon>
+        <div>{{this.duration.seconds}}</div>
+      </mat-list-item>
+    </mat-list>
   </mat-card-content>
+
 </mat-card>
