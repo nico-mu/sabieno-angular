@@ -29,7 +29,7 @@ export class CountUpComponent implements OnInit {
     this.setDate(this.startDate);
     setInterval(() => {
       this.formatTimeRange(this.startDate);
-    })
+    }, 100)
   }
 
   public setDate(date: Moment) {

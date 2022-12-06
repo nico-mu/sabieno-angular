@@ -18,6 +18,7 @@ export class CountDownComponent implements OnInit {
 
   tableView = true;
   public duration: TimeRange = {} as TimeRange;
+  public isToday: boolean = false;
 
 
   @Input() displayedColumns: string[] = ['months' ,'weeks', 'days', 'hours', 'minutes', 'seconds'];
@@ -32,7 +33,7 @@ export class CountDownComponent implements OnInit {
     this.setDate(this.targetDate);
     setInterval(() => {
       this.formatTimeRange(this.targetDate);
-    })
+    }, 100)
   }
 
   public setDate(date: Moment) {
@@ -41,6 +42,7 @@ export class CountDownComponent implements OnInit {
   }
 
   private formatTimeRange(date: Moment) {
+    this.isToday = date.isSame(moment(), 'day');
     const timeRange = this.getTimeRange(date);
     this.dataSource = [timeRange];
   }

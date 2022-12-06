@@ -2,10 +2,10 @@
   <mat-card-title>
     <div fxLayout="row" fxLayoutAlign="space-between none">
       <div>Countdown bis {{eventName}}</div>
-      <button (click)="switchData()" mat-icon-button aria-label="Ansicht wechseln"><mat-icon>compare_arrows</mat-icon></button>
+      <button *ngIf="!isToday" (click)="switchData()" mat-icon-button aria-label="Ansicht wechseln"><mat-icon>compare_arrows</mat-icon></button>
     </div>
   </mat-card-title>
-  <mat-card-content>
+  <mat-card-content *ngIf="!isToday">
     <table *ngIf="tableView" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <!-- Seconds Column -->
@@ -91,6 +91,9 @@
         <div>{{this.duration.seconds}}</div>
       </mat-list-item>
     </mat-list>
+  </mat-card-content>
+  <mat-card-content *ngIf="isToday">
+    <div>Heute ist {{eventName}}!</div>
   </mat-card-content>
 
 </mat-card>
